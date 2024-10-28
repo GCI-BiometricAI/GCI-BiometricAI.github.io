@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Data Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Workout Data Analysis</h1>
+        <p>Analyze your Garmin workout data to prevent injuries and improve performance</p>
+    </header>
+
+    <main>
+        <!-- Form Section for Inputs -->
+        <form id="uploadForm">
+            <section class="input-section">
+                <h2>Goals/Fitness Level/Equipment Access</h2>
+                <textarea id="goalsInput" placeholder="Describe any goals, your experience lifting/running/etc., and what equipment you have access to" rows="3"></textarea>
+            </section>
+
+            <!-- CSV Upload Section -->
+            <section class="upload-section">
+                <h2>Upload Workout Data</h2>
+                <input type="file" id="csvFile" accept=".csv" required>
+            </section>
+
+            <!-- Workout Description Section -->
+            <section class="description-section">
+                <h2>Workout Description</h2>
+                <textarea id="workoutDescription" placeholder="Describe your workout (e.g., distance, time, intensity)" rows="4"></textarea>
+            </section>
+
+            <!-- Pain Input Section -->
+            <section class="pain-section">
+                <h2>Pain Feedback</h2>
+                <textarea id="painInput" placeholder="Describe any pain or discomfort experienced" rows="3"></textarea>
+            </section>
+
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
