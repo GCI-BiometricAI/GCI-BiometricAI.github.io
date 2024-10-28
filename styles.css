@@ -150,3 +150,22 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #F3EDE5;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #ffffff;
+    cursor: pointer;
+}
