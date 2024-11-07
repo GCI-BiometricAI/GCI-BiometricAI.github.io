@@ -18,6 +18,7 @@
         </nav>
     </header>
 
+    <!-- For video example use the exercise name after https://www.youtube.com/results?search_query= -->
     <main>
         <!-- Treatment Exercises Table -->
         <section class="table-section">
@@ -58,8 +59,54 @@
         <canvas id="treatmentChart"></canvas>
         <canvas id="workoutChart"></canvas>
     </main>
-
+    <script>
+        // Retrieve data from localStorage
+        const data = JSON.parse(localStorage.getItem('workoutData'));
+        
+        // Populate Pain Treatment Exercises Table
+        function populateTreatmentTable(treatmentExercises) {
+            const tableBody = document.getElementById('treatmentTable').querySelector('tbody');
+            treatmentExercises.forEach(exercise => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${exercise.name}</td>
+                    <td>${exercise.explanation}</td>
+                    <td><a href="${exercise.link}" target="_blank">Video Example</a></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        
+        // Populate Workout Recommendation Table
+        function populateWorkoutTable(workoutRecommendation) {
+            const tableBody = document.getElementById('workoutTable').querySelector('tbody');
+            Object.keys(workoutRecommendation).forEach(day => {
+                const dayData = workoutRecommendation[day];
+                dayData.Exercises.forEach(exercise => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${day}</td>
+                        <td>${dayData.Focus}</td>
+                        <td>${exercise.Name}</td>
+                        <td>${exercise.Sets}</td>
+                        <td>${exercise.Reps}</td>
+                        <td>${exercise.Rest}</td>
+                        <td>${exercise.Intensity}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            });
+        }
+        
+        // Ensure data exists and populate tables
+        if (data) {
+            populateTreatmentTable(data["treatment exercises"]["pain treatment exercises"]);
+            populateWorkoutTable(data["workout recomendation"]);
+        } else {
+            console.error('No workout data found in localStorage');
+        }
+        </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
 </body>
 </html>

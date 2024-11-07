@@ -44,10 +44,36 @@
                 <textarea id="painInput" placeholder="Describe any pain or discomfort experienced" rows="3"></textarea>
             </section>
 
-            <button type="submit">Submit</button>
+            <button type="submit" onclick="generateWorkout()">Submit</button>
+            <div id="output"></div>
+            <script>
+            async function generateWorkout() {
+            try {
+                const response = await fetch('http://localhost:3000/generate-workout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                document.getElementById("output").textContent = JSON.stringify(result.data, null, 2);
+                localStorage.setItem('workoutData', JSON.stringify(result.data));
+                window.location.href = 'charts.html';
+                } else {
+                console.error("Error:", result.error);
+                document.getElementById("output").textContent = "Error generating workout plan. Please try again.";
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById("output").textContent = "Error connecting to the server. Please check your connection.";
+            }
+            }
+            </script>
         </form>
     </main>
 
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
 </body>
 </html>
