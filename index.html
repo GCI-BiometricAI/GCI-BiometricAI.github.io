@@ -49,7 +49,7 @@
             <script>
             async function generateWorkout() {
             try {
-                const response = await fetch('http://localhost:3000/generate-workout', {
+                const response = await fetch('./generate-workout', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
