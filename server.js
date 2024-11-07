@@ -36,7 +36,9 @@ async function run() {
     generationConfig,
     history: [],
   });
+  
 
+  //Try and add the info from index.html inside the form to the line below
   const result = await chatSession.sendMessage("Give me a workout plan for 7 days of the week. I have pain in my right hamstring, provide exercises to address this. Make sure to give the result in the format provided and make it a readable JSON");
   return result.response.text();
 }
